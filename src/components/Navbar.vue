@@ -1,9 +1,9 @@
 <template>
-    <div class="navbar">
-        <div class="navLink">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+    <div class="w3-theme">
+        <div halign="center">
+            <a class="w3-button w3-theme-action" href="#">About</a>
+            <a class="w3-button w3-theme-action" href="#">Services</a>
+            <a class="w3-button w3-theme-action" href="#">Contact</a>
         </div>
     </div>
 </template>
@@ -15,27 +15,5 @@ export default {
 </script>
 
 <style scoped>
-.navbar{
-    background: #f44336;
-    padding: 1rem;
-    font-size: 1.5rem;
-    border-bottom: 1px solid white;
-
-
-}
-.navLink{
-text-align: center;
-}
-a{
-    text-decoration: none;
-    padding: 1rem;
-    color:#fff;
-    text-align: center;
-}
-@media only screen and (max-width: 600px) {
-    .navLink{
-        display: flex;
-        flex-direction: column;
-    }
-}
+ @import "../assets/css/mediaLookup.css";
 </style>

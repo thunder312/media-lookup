@@ -1,17 +1,4 @@
-h3 {
-    margin: 40px 0 0;
-}
+/* Thanks to https://www.w3schools.com/w3css/w3css_color_classes.asp */
+@import "https://www.w3schools.com/w3css/4/w3.css";
+@import "https://www.w3schools.com/lib/w3-theme-deep-purple.css";
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}

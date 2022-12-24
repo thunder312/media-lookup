@@ -1,3 +1,4 @@
+import "./assets/css/mediaLookup.css";
 import { createApp } from 'vue'
 import App from './App.vue'
 
