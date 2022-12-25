@@ -22,9 +22,11 @@ $themes: (
 $color-schemes: (
   scheme-default: (
     backgroundColor: hsl(268, 100%, 50%),
+    backgroundColorLight: hsl(268, 100%, 85%),
   ),
-  scheme-cs1: (
+  scheme-orange: (
     backgroundColor: hsl(36, 100%, 45%),
+    backgroundColorLight: hsl(36, 100%, 80%),
   )
 );
 

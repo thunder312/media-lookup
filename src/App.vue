@@ -1,5 +1,4 @@
 <template>
-  <link href="/src/file.css" rel="stylesheet"/>
   <MediaLookup/>
 </template>
 

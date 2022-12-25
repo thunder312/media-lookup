@@ -1,25 +1,19 @@
 <template>
  <div class="wrapper">
-  <div class="theme-wrapper theme-light color-scheme-default">
+  <div class="theme-wrapper theme-light color-scheme-orange">
     <div class="window">
       <div class="header">
         <div class="header-title-wrapper">
-          <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+          <i class="fa-regular fa-free-code-camp" aria-hidden="true"></i>
           <div class="header-title">Media Lookup</div>
-        </div>
-        <div class="logout-button">
-          <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
         </div>
 
       </div>
       <div class="page">
         <div class="sidebar">
-          <i class="fa fa-var-address-book">Adressbook</i>
-          <i class="fa fa-calendar-check-o" aria-hidden="true">Calendar</i>
-          <i class="fa fa-tachometer" aria-hidden="true">Tachometer</i>
-          <i class="fa fa-university" aria-hidden="true">University</i>
-          <i class="fa fa-taxi" aria-hidden="true">Taxi</i>
-          <i class="fa fa-envelope" aria-hidden="true">Envelope</i>
+          <div class="link"><img src="@/assets/icons/rezept.svg"/>Rezepte</div>
+          <div class="link"><img src="@/assets/icons/film.svg"/>Filme</div>
+          <div class="link"><img src="@/assets/icons/buch.svg"/>Bücher</div>
         </div>
         <div class="content">
           <div class="section">
