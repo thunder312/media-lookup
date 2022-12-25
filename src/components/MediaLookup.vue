@@ -14,7 +14,7 @@
       </div>
       <div class="page">
         <div class="sidebar">
-          <i class="fa fa-address-book">Adressbook</i>
+          <i class="fa fa-var-address-book">Adressbook</i>
           <i class="fa fa-calendar-check-o" aria-hidden="true">Calendar</i>
           <i class="fa fa-tachometer" aria-hidden="true">Tachometer</i>
           <i class="fa fa-university" aria-hidden="true">University</i>
