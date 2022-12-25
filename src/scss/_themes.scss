@@ -1,0 +1,59 @@
+$themes: (
+  light: (
+    backgroundLight: hsl(0, 0%, 100%),
+    backgroundDark: hsl(240, 7%, 97%),
+    textColor: hsl(0, 0%, 100%),
+    textDark: hsl(0, 0%, 0%),
+    textLight: hsl(200, 1%, 57%),
+    contentColor: hsl(180, 1%, 73%),  
+    iconColor: hsl(0, 0%, 0%),
+    
+  ),
+  dark: (
+    backgroundLight: hsl(200, 24%, 10%),
+    backgroundDark: hsl(0, 0%, 0%),
+    textColor: hsl(0, 0%, 100%),
+    textDark: hsl(0, 0%, 100%),
+    textLight: hwb(180 73% 27%),
+    iconColor: hsl(0, 0%, 100%),
+  ),
+);
+
+$color-schemes: (
+  scheme-default: (
+    backgroundColor: hsl(268, 100%, 50%),
+  ),
+  scheme-cs1: (
+    backgroundColor: hsl(36, 100%, 45%),
+  )
+);
+
+@mixin customize($arg: theme) {
+  $array: $themes;
+  $prefix: theme;
+
+  @if ($arg == theme) {
+    $array: $themes;
+    $prefix: theme;
+  } @else {
+    $array: $color-schemes;
+    $prefix: color;
+  }
+
+  @each $theme, $map in $array {
+    .#{$prefix}-#{$theme} & {
+      $array-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($array, $theme), '#{$key}');
+        $array-map: map-merge($array-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $array-map: null !global;
+    }
+  }
+}
+
+@function getValue($key) {
+  @return map-get($array-map, $key);
+}

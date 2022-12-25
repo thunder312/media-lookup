@@ -1,0 +1,117 @@
+@import 'themes';
+
+.window {
+    display: flex;
+     width: 100%;
+     flex-direction: column;
+     font-family: 'Nunito Sans', sans-serif;
+     .header {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       width: 100%;
+       height: 70px;
+       @include customize(color) {
+         background-color: getValue(backgroundColor); 
+       }
+       @include customize(theme) {
+        color: getValue(textColor);
+       }
+       .header-title-wrapper {
+         margin-left: 10px;
+         display: flex;
+         .header-title {
+           margin-left: 10px;
+           font-size: 24px;
+           margin-left: 15px;
+         }
+         .fa {
+           font-size: 25px;
+         }
+       }
+       .logout-button {
+         margin-right: 10px;
+         border-radius: 2px;
+         padding: 5px 10px;
+         border: none;
+         .fa {
+           font-size: 18px;
+         }
+       }
+     }
+     .page {
+       display: flex;
+       flex-direction: row;
+       height: 100%;
+       width: 100%;
+       .sidebar {
+         @include customize(theme) {
+           background-color: getValue(backgroundDark);
+         }
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         padding-top: 20px;
+         width: 100px;
+         height: 100%;
+         .fa {
+           font-size: 20px;
+           margin-bottom: 20px;
+            @include customize(theme) {
+             color: getValue(iconColor);
+           }
+         }
+       }
+       .content {
+         @include customize(theme) {
+           background-color: getValue(backgroundLight);
+         }
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         padding-left: 20px;
+         height: 100%;
+         .section {
+           width: 98%;
+         }
+         .title {
+           font-size: 22px;
+           margin-bottom: 10px;
+            @include customize(theme) {
+             color: getValue(textDark);
+           }
+         }
+         .sub-title {
+           @include customize(theme) {
+             color: getValue(textLight);
+           }
+           font-size: 14px;
+           margin-bottom: 10px;
+         }
+         .button {
+           padding: 10px 30px;
+           border: none;
+           @include customize(theme) {
+             color: getValue(textColor);
+           }
+           @include customize(color) {
+             background-color: getValue(backgroundColor);
+           }
+         }
+       }
+     }
+   }
+   
+   html, body, .wrapper {
+     height: 100%;
+     width: 100%;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+   }
+   .theme-wrapper {
+     display: flex;
+     flex: 1;
+   }

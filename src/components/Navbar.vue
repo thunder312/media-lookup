@@ -13,7 +13,3 @@ export default {
     name: 'NavBar'
 }
 </script>
-
-<style scoped>
- @import "../assets/css/mediaLookup.css";
-</style>
