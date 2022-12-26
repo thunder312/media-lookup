@@ -1,8 +1,8 @@
 <template>
   <div class="section">
-    <div class="title">Main Page</div>
-    <div class="sub-title">Finding all your media</div>
-    <button class="button">LEARN MORE</button>
+    <div class="title">Hauptseite</div>
+    <div class="sub-title">Alle deine Medien...</div>
+    <button class="button">Test-Button</button>
   </div>
 </template>
 
@@ -15,6 +15,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-  @import "@/scss/_app.scss";
-</style>

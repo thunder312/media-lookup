@@ -1,8 +1,9 @@
 <template>
 <div class="sidebar">
-    <div class="link"><img src="@/assets/icons/rezept.svg"/>Rezepte</div>
-    <div class="link"><img src="@/assets/icons/film.svg"/>Filme</div>
-    <div class="link"><img src="@/assets/icons/buch.svg"/>Bücher</div>
+    <router-link to="/" class="link"><img src="@/assets/icons/home.svg"/>Home</router-link>
+    <router-link to="/receipts" class="link"><img src="@/assets/icons/rezept.svg"/>Rezepte</router-link>
+    <router-link to="/movies" class="link"><img src="@/assets/icons/film.svg"/>Filme</router-link>
+    <router-link to="/books" class="link"><img src="@/assets/icons/buch.svg"/>Bücher</router-link>
   </div>
 </template>
 <script>
@@ -15,6 +16,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-  @import "@/scss/_app.scss";
-</style>

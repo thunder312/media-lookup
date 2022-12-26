@@ -10,7 +10,7 @@
       <div class="page">
           <Sidebar/>
         <div class="content">
-          <MediaLookup/>
+          <router-view></router-view>
         </div>
       </div>
     </div>
@@ -20,13 +20,14 @@
 
 <script>
 import Sidebar from './components/Sidebar.vue'
-import MediaLookup from './components/MediaLookup.vue'
 
 export default {
   name: 'App',
   components: {
-    Sidebar,
-    MediaLookup
+    Sidebar
   }
 }
 </script>
+<style lang="scss">
+  @import "@/scss/_app.scss";
+</style>
