@@ -4,10 +4,8 @@
     <div class="window">
       <div class="header">
         <div class="header-title-wrapper">
-          <i class="fa-regular fa-free-code-camp" aria-hidden="true"></i>
-          <div class="header-title">Media Lookup</div>
+          <div class="header-title">Medien Suche</div>
         </div>
-
       </div>
       <div class="page">
         <div class="sidebar">
