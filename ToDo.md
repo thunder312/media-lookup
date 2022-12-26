@@ -1,10 +1,12 @@
 # media-lookup
 
 ## Routing
-''' https://www.a-coding-project.de/ratgeber/javascript/vue/routing '''
+``` https://www.a-coding-project.de/ratgeber/javascript/vue/routing ```
 
 ## Database
 
 ## Importer
 ### Books
-''' by ISBN? '''
+``` by ISBN? ```
+
+## i18n
