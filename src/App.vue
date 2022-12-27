@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="page">
-          <Sidebar/>
+          <LinkBar/>
         <div class="content">
           <router-view></router-view>
         </div>
@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue'
+import LinkBar from './components/LinkBar.vue'
 
 export default {
   name: 'App',
   components: {
-    Sidebar
+    LinkBar
   }
 }
 </script>

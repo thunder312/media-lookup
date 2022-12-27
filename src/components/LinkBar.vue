@@ -1,5 +1,5 @@
 <template>
-<div class="sidebar">
+<div class="linkbar">
     <router-link to="/" class="link"><img src="@/assets/icons/home.svg"/>Home</router-link>
     <router-link to="/receipts" class="link"><img src="@/assets/icons/rezept.svg"/>Rezepte</router-link>
     <router-link to="/movies" class="link"><img src="@/assets/icons/film.svg"/>Filme</router-link>
@@ -9,7 +9,7 @@
 <script>
 export default {
     // eslint-disable-next-line
-  name: 'Sidebar',
+  name: 'LinkBar',
   components: {},
   props: {
     msg: String

@@ -1,18 +1,19 @@
 @import 'themes';
-.sidebar {
+.linkbar {
   @include customize(theme) {
     background-color: getValue(backgroundDark);
   }
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding-top: 20px;
-  padding-left: 20px;
-  width: 170px;
-  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  height: auto;
   .link {
     font-size: 30px;
-    margin-bottom: 15px;
+    padding:0 10px 0 10px;
+    width: auto;
     text-decoration: none;
     img {
      vertical-align: text-top;
@@ -53,7 +54,7 @@
      }
      .page {
        display: flex;
-       flex-direction: row;
+       flex-direction: column;
        height: 100%;
        width: 100%;
        .content {
