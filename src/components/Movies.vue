@@ -1,7 +1,7 @@
 <template>
-         <div class="page">
-            Movies
-         </div>
+  <div class="section">
+    <div class="title">Filme</div>
+  </div>
 </template>
    
 <script>

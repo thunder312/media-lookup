@@ -1,7 +1,7 @@
 # media-lookup
 
 ## Routing
-``` https://www.a-coding-project.de/ratgeber/javascript/vue/routing ```
+done
 
 ## Database
 

@@ -1,10 +1,15 @@
 <template>
-    <div class="page">
-            Bücher
-         </div>
+  <div class="section">
+    <div class="title">Bücher</div>
+  <div class="sub-section">
+    <!--<SortedList/> -->
+  </div>
+  </div>
 </template>
    
 <script>
+
+// import SortedList from './SortedList.vue'
   export default {
   // eslint-disable-next-line
     name: 'Books',

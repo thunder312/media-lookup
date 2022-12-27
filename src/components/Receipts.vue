@@ -1,7 +1,5 @@
 <template>
-    <div class="page">
-        Rezepte
-    </div>
+    <div class="title">Rezepte</div>
 </template>
    
    <script>
