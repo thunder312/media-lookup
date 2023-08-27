@@ -1,5 +1,10 @@
 <template>
-  <div class="title">Hauptseite</div>
+  <div class="section">
+    <div class="title">Hauptseite</div>
+  <div class="sub-section">
+    <!--<SortedList/> -->
+  </div>
+  </div>
 </template>
 
 <script>

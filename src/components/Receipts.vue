@@ -1,5 +1,10 @@
 <template>
+    <div class="section">
     <div class="title">Rezepte</div>
+  <div class="sub-section">
+    <!--<SortedList/> -->
+  </div>
+  </div>
 </template>
    
    <script>

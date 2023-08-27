@@ -1,47 +1,40 @@
 <template>
   <div class="section">
-    <div class="title">Filme</div>
-    <div>
-      <b-table striped hover :items="items" :fields="fields"></b-table>
-    </div>
-  </div>
+  <div class="title">Filme</div>
+<div class="sub-section">
+  <Table :fields='fields' :tableData="tableData"></Table>
+</div>
+</div>
 </template>
+
    
 <script>
-  export default {
-      // eslint-disable-next-line
-    name: 'Movies',
-    components: {},
-    props: {
-      msg: String
-    },
-    data() {
-      return {
-        // Note 'isActive' is left out and will not appear in the rendered table
-        fields: [
-          {
-            key: 'last_name',
-            sortable: true
-          },
-          {
-            key: 'first_name',
-            sortable: false
-          },
-          {
-            key: 'age',
-            label: 'Person age',
-            sortable: true,
-            // Variant applies to the whole column, including the header and footer
-            variant: 'danger'
-          }
-        ],
-        items: [
-          { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-          { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-          { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-          { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
-        ]
-      }
-    }
-  }
+import Table from './Table.vue'
+export default {
+  // eslint-disable-next-line
+  name: 'Movies',
+  components: {
+    Table
+  },
+  props: {
+    msg: String,
+  },
+  data() {
+    return {}
+  },
+  setup() {
+    //An array of values for the data
+    const tableData = [
+      { ID: "01", Name: "Abiola Esther", Course: "Computer Science", Gender: "Female", Age: "17" },
+      { ID: "02", Name: "Robert V. Kratz", Course: "Philosophy", Gender: "Male", Age: '19' },
+      { ID: "03", Name: "Kristen Anderson", Course: "Economics", Gender: "Female", Age: '20' },
+      { ID: "04", Name: "Adam Simon", Course: "Food science", Gender: "Male", Age: '21' },
+      { ID: "05", Name: "Daisy Katherine", Course: "Business studies", Gender: "Female", Age: '22' },
+    ]
+    const fields = [
+      'ID', 'Name', 'Genre', 'Jahr', 'Bewertung', 'Notizen'
+    ]
+    return { tableData, fields }
+  },
+}
 </script>

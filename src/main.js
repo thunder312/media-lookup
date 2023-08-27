@@ -5,6 +5,7 @@ import Home from './components/MediaLookup.vue';
 import Receipts from './components/Receipts.vue';
 import Books from './components/Books.vue';
 import Movies from './components/Movies.vue';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),

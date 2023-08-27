@@ -1,8 +1,8 @@
 <template>
   <div class="section">
     <div class="title">Bücher</div>
-  <div class="sub-section">
-    <!--<SortedList/> -->
+  
+    <!--<SortedList/> --><div class="sub-section">
   </div>
   </div>
 </template>
