@@ -5,7 +5,7 @@
                 aria-describedby="button-addon2">
         </div>
     </div-->
-    <table id="tableComponent" class="table table-bordered table-striped" style="padding: 10px;">
+    <table id="tableComponent" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <!-- loop through each value of the fields to get the table header -->
