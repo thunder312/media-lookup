@@ -4,7 +4,7 @@ import { createRouter,createWebHistory} from 'vue-router';
 import Home from './components/MediaLookup.vue';
 import Receipts from './components/Receipts.vue';
 import Books from './components/Books.vue';
-import Movies from './components/Movies.vue';
+import Films from './components/Films.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createRouter({
@@ -13,7 +13,7 @@ const router = createRouter({
       { path: '/', component: Home },
       { path: '/receipts', component: Receipts },
       { path: '/books', component: Books },
-      { path: '/movies', component: Movies }
+      { path: '/films', component: Films }
     ]
   });
 

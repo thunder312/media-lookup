@@ -2,7 +2,7 @@
 import express from "express";
   
 // import function from controller
-import { showFilms, showFilmById, createFilm, updateFilm, deleteFilm } from "../../backend/controllers/product.js";
+import { showFilms, showFilmById, createFilm, updateFilm, deleteFilm } from "../../backend/controllers/Films.js";
   
 // init express router
 const router = express.Router();
