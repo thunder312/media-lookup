@@ -1,13 +1,12 @@
 <template>
   <div class="section">
+    <div class="title">Bücher</div>
+    <!--div class="linkbar">
+    <router-link to="/addFilm" class="link">Neuer Film</router-link>
+  </div-->
     <div class="sub-section">
-      <GenericTable 
-      :data="tableData" 
-      :columns="tableColumns" 
-      :is-Paginated="isPaginated" 
-      :init-sort-key="name" 
-      :init-limit="limit" 
-      :tableName="tableName"></GenericTable>
+      <GenericTable :data="tableData" :columns="tableColumns" :is-Paginated="isPaginated" :init-sort-key="name"
+        :init-limit="limit" :tableName="tableName"></GenericTable>
     </div>
   </div>
 </template>
@@ -15,6 +14,7 @@
    
 <script>
 import GenericTable from './GenericTable.vue'
+//import FilmDataService from '../services/FilmDataService'
 export default {
   // eslint-disable-next-line
   name: 'Films',
@@ -24,10 +24,9 @@ export default {
   props: {
     msg: String,
   },
-  methods: {
-  },
   data() {
     return {
+      films: [],
       /*[
         { ID: "01", Name: "Abiola Esther", Genre: "Computer Science", Bewertung: "Female", Jahr: "17", Notizen:"Das ist einfach nur ein fürterlich langer Text, um zu testen, wie sich die Tabelle streckt." },
         { ID: "02", Name: "Robert V. Kratz", Course: "Philosophy", Gender: "Male", Age: '19' },
@@ -49,5 +48,9 @@ export default {
       tableName: 'Filme'
     }
   },
+  created() {
+    //console.log(FilmDataService.getAll());
+  },
+  methods: {}
 }
 </script>
