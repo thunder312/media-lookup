@@ -11,4 +11,5 @@ VALUES ("Action", ""),
  ("Thriller", ""), 
  ("Mystery", ""), 
  ("Krieg", ""), 
- ("Western", "");
+ ("Western", ""),
+ ("SitCom", "");
