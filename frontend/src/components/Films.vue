@@ -15,7 +15,6 @@
    
 <script>
 import GenericTable from './GenericTable.vue'
-import FilmsController from '../../../backend/controllers/FilmsController.js'
 export default {
   // eslint-disable-next-line
   name: 'Films',
@@ -26,13 +25,9 @@ export default {
     msg: String,
   },
   methods: {
-    getAllData: () => {
-      return FilmsController.showFilms();
-    }
   },
   data() {
     return {
-      tableData: this.getAllData(),
       /*[
         { ID: "01", Name: "Abiola Esther", Genre: "Computer Science", Bewertung: "Female", Jahr: "17", Notizen:"Das ist einfach nur ein fürterlich langer Text, um zu testen, wie sich die Tabelle streckt." },
         { ID: "02", Name: "Robert V. Kratz", Course: "Philosophy", Gender: "Male", Age: '19' },
