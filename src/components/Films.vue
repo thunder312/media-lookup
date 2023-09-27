@@ -15,10 +15,11 @@
         </div>
         <div class="col-md-6">
           <h4>Film Liste</h4>
+          {{ films }}
           <ul class="list-group">
             <li class="list-group-item" :class="{ active: index == currentIndex }" v-for="(film, index) in films"
               :key="index" @click="setActiveFilm(film, index)">
-              {{ film.title }}
+              {{ film.name }}
             </li>
           </ul>
 
@@ -32,7 +33,7 @@
                 <label><strong>Titel:</strong></label> {{ currentFilm.name }}
               </div>
               <div>
-                <label><strong>Notizen:</strong></label> {{ currentFilm.note }}
+                <label><strong>Notizen:</strong></label> {{ currentFilm.notes }}
               </div>
               <div>
                 <label><strong>Jahr:</strong></label> {{ currentFilm.year }}
