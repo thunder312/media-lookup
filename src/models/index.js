@@ -7,10 +7,10 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   operatorsAliases: false,
 
   pool: {
-  /*  max: dbConfig.pool.max,
+  max: dbConfig.pool.max,
     min: dbConfig.pool.min,
     acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle */
+    idle: dbConfig.pool.idle 
   }
 });
 

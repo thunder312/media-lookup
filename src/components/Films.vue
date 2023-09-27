@@ -1,25 +1,67 @@
 <template>
   <div class="section">
-    <div class="title">Bücher</div>
-    <!--div class="linkbar">
-    <router-link to="/addFilm" class="link">Neuer Film</router-link>
-  </div-->
+    <div class="title">Filme</div>
     <div class="sub-section">
-      <GenericTable :data="tableData" :columns="tableColumns" :is-Paginated="isPaginated" :init-sort-key="name"
-        :init-limit="limit" :tableName="tableName"></GenericTable>
+      <div class="list row">
+        <div class="col-md-8">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Filmtitel suchen" v-model="title" />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" @click="searchTitle">
+                Suchen
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>Film Liste</h4>
+          <ul class="list-group">
+            <li class="list-group-item" :class="{ active: index == currentIndex }" v-for="(film, index) in films"
+              :key="index" @click="setActiveFilm(film, index)">
+              {{ film.title }}
+            </li>
+          </ul>
+
+          <!--button class="m-3 btn btn-sm btn-danger" @click="removeAllFilms">
+            Alle Filme löschen
+          </button-->
+          <div class="col-md-6">
+            <div v-if="currentFilm">
+              <h4>Film</h4>
+              <div>
+                <label><strong>Titel:</strong></label> {{ currentFilm.name }}
+              </div>
+              <div>
+                <label><strong>Notizen:</strong></label> {{ currentFilm.note }}
+              </div>
+              <div>
+                <label><strong>Jahr:</strong></label> {{ currentFilm.year }}
+              </div>
+
+              <a class="badge badge-warning" :href="'/films/' + currentFilm.id">
+                Edit
+              </a>
+            </div>
+            <div v-else>
+              <br />
+              <p>Bitte wählen Sie einen Film aus</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
    
 <script>
-import GenericTable from './GenericTable.vue'
-//import FilmDataService from '../services/FilmDataService'
+//import GenericTable from './GenericTable.vue'
+import FilmDataService from '../services/FilmDataService'
 export default {
   // eslint-disable-next-line
   name: 'Films',
   components: {
-    GenericTable
+    // GenericTable
   },
   props: {
     msg: String,
@@ -27,30 +69,58 @@ export default {
   data() {
     return {
       films: [],
-      /*[
-        { ID: "01", Name: "Abiola Esther", Genre: "Computer Science", Bewertung: "Female", Jahr: "17", Notizen:"Das ist einfach nur ein fürterlich langer Text, um zu testen, wie sich die Tabelle streckt." },
-        { ID: "02", Name: "Robert V. Kratz", Course: "Philosophy", Gender: "Male", Age: '19' },
-        { ID: "03", Name: "Kristen Anderson", Course: "Economics", Gender: "Female", Age: '20' },
-        { ID: "04", Name: "Adam Simon", Course: "Food science", Gender: "Male", Age: '21' },
-        { ID: "05", Name: "Daisy Katherine", Course: "Business studies", Gender: "Female", Age: '22' }
-      ],*/
-      tableColumns: [
-        'ID', 'Name', 'Genre', 'Jahr', 'Bewertung', 'Notizen'
-        /*{ label: 'ID', field: 'id', sortable: true },
-        { label: 'Name', field: 'name', sortable: true },
-        { label: 'Genre', field: 'genre', sortable: true },
-        { label: 'Jahr', field: 'year', sortable: true },
-        { label: 'Bewertung', field: 'rating', sortable: true },
-        { label: 'Notizen', field: 'notes', sortable: true }*/
-      ],
-      isPaginated: true,
-      limit: 20,
-      tableName: 'Filme'
+      currentFilm: null,
+      currentIndex: -1,
+      title: ""
     }
   },
-  created() {
-    //console.log(FilmDataService.getAll());
+  methods: {
+    retrieveFilms() {
+      FilmDataService.getAll()
+        .then(response => {
+          this.films = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    refreshList() {
+      this.retrieveFilms();
+      this.currentFilm = null;
+      this.currentIndex = -1;
+    },
+
+    setActiveFilm(film, index) {
+      this.currentFilm = film;
+      this.currentIndex = index;
+    },
+
+    removeAllFilms() {
+      FilmDataService.deleteAll()
+        .then(response => {
+          console.log(response.data);
+          this.refreshList();
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    searchTitle() {
+      FilmDataService.findByTitle(this.title)
+        .then(response => {
+          this.films = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
   },
-  methods: {}
-}
+  mounted() {
+    this.retrieveFilms();
+  }
+};
 </script>
