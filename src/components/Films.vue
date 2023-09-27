@@ -15,7 +15,6 @@
         </div>
         <div class="col-md-6">
           <h4>Film Liste</h4>
-          {{ films }}
           <ul class="list-group">
             <li class="list-group-item" :class="{ active: index == currentIndex }" v-for="(film, index) in films"
               :key="index" @click="setActiveFilm(film, index)">
@@ -26,17 +25,18 @@
           <!--button class="m-3 btn btn-sm btn-danger" @click="removeAllFilms">
             Alle Filme löschen
           </button-->
+          
           <div class="col-md-6">
             <div v-if="currentFilm">
-              <h4>Film</h4>
+              <h4>Info</h4>
               <div>
-                <label><strong>Titel:</strong></label> {{ currentFilm.name }}
+                <strong>Titel:</strong> {{ currentFilm.name }}
               </div>
               <div>
-                <label><strong>Notizen:</strong></label> {{ currentFilm.notes }}
+                <strong>Notizen:</strong>{{ currentFilm.notes }}
               </div>
               <div>
-                <label><strong>Jahr:</strong></label> {{ currentFilm.year }}
+                <strong>Erscheinungsdatum:</strong> {{ formatDate(currentFilm.year) }}
               </div>
 
               <a class="badge badge-warning" :href="'/films/' + currentFilm.id">
@@ -58,6 +58,7 @@
 <script>
 //import GenericTable from './GenericTable.vue'
 import FilmDataService from '../services/FilmDataService'
+import dayjs from 'dayjs';
 export default {
   // eslint-disable-next-line
   name: 'Films',
@@ -76,6 +77,10 @@ export default {
     }
   },
   methods: {
+    formatDate(dateString) {
+      const date = dayjs(dateString);
+      return date.format('DD.MM.YYYY');
+    },
     retrieveFilms() {
       FilmDataService.getAll()
         .then(response => {
