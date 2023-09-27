@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th v-for="(key, index) in columns" :class="{ active: sortKey === key }" :key="index" @click="sortBy(key)">
-              {{ key }}
+              {{ key.label }}
               <span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow" />
             </th>
           </tr>
@@ -15,8 +15,11 @@
         <tbody>
           <tr v-for="(entry, index) in displayedData" :key="index">
             <td v-for="(key, index) in columns" :key="index">
-              <div>
-                {{ entry[key] }}
+              <div v-if="key.field == 'year'">
+                {{ formatDate(entry[key.field]) }}
+              </div>
+              <div v-else>
+                {{ entry[key.field] }}
               </div>
             </td>
           </tr>
@@ -36,7 +39,7 @@
 </template>
   
 <script>
-
+import dayjs from 'dayjs';
 export default {
   props: {
     tableName: {
@@ -73,10 +76,10 @@ export default {
     let initSortOrders = {};
     initSortOrders = this.columns.reduce((obj, key) => {
       const acc = Object.assign({}, obj);
-      if (this.initSortKey === key) {
-        acc[key] = -1;
+      if (this.initSortKey === key.field) {
+        acc[key.field] = -1;
       } else {
-        acc[key] = 1;
+        acc[key.field] = 1;
       }
       return acc;
     }, {});
@@ -132,6 +135,10 @@ export default {
     },
   },
   methods: {
+    formatDate(dateString) {
+      const date = dayjs(dateString);
+      return date.format('DD.MM.YYYY');
+    },
     sortBy(key) {
       this.sortKey = key;
       this.sortOrders[key] = this.sortOrders[key] * -1;
