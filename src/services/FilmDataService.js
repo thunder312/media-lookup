@@ -25,8 +25,8 @@ class FilmDataService {
     return http.delete(`/films`);
   }
 
-  findByTitle(title) {
-    return http.get(`/films?title=${title}`);
+  findByName(name) {
+    return http.get(`/films?name=${name}`);
   }
 }
 

@@ -5,7 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "npm run serve"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -16,8 +19,10 @@
     "axios": "^1.5.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.1",
+    "concurrently": "^8.2.1",
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.10",
     "express": "^4.18.2",
     "lodash": "^4.17.21",
     "mysql2": "^3.6.1",
@@ -55,5 +60,17 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "server.js",
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "mysql",
+    "rest",
+    "api"
+  ],
+  "author": "dertl",
+  "license": "ISC"
 }
