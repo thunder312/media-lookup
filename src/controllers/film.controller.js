@@ -38,7 +38,7 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
   
-    Film.findAll({ where: condition })
+    Film.findAll({ where: condition }, {include: ["Rating"]})
       .then(data => {
         res.send(data);
       })
@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Tutorial.findByPk(id)
+    Tutorial.findByPk(id, {include: ["Rating"]})
       .then(data => {
         if (data) {
           res.send(data);
