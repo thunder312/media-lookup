@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Film = sequelize.define("film", {
+    const Film = sequelize.define("Film", {
       id: {
         type: Sequelize.STRING,
         primaryKey: true
@@ -17,23 +17,13 @@ module.exports = (sequelize, Sequelize) => {
       year: {
         type: Sequelize.STRING
       }
-    });
+    },
+    {
+      associate: function(){
+        Film.hasOne(Rating, {as: 'Rating'});
+      }
+    }
+    );
 
-    const Rating = sequelize.define("r", {
-      id: {
-        type: Sequelize.STRING,
-        primaryKey: true
-      },
-      description: {
-        type: Sequelize.STRING
-      },
-    });
-
-    Film.hasOne(Rating, {
-      foreignKey: 'rating',
-      constraints: false
-    });
-    Rating.belongsTo(Film);
-  
     return Film;
   };

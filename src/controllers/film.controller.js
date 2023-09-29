@@ -1,5 +1,6 @@
 const db = require("../models");
 const Film = db.films;
+const Rating = db.Rating;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -38,7 +39,8 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
   
-    Film.findAll({ where: condition }, {include: ["Rating"]})
+    Film.findAll({ where: condition }, 
+      { include: [ { model: Rating, where: { id: Film.rating } }] })
       .then(data => {
         res.send(data);
       })
@@ -54,7 +56,8 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Tutorial.findByPk(id, {include: ["Rating"]})
+    Film.findByPk(id, 
+      { include: [ { model: Rating, where: { id: Film.rating } }] })
       .then(data => {
         if (data) {
           res.send(data);
