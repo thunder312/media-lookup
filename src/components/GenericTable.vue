@@ -18,9 +18,6 @@
               <div v-if="key.field == 'year'">
                 {{ formatDate(entry[key.field]) }}
               </div>
-              <div v-else-if="key.field == 'rating'">
-                {{ entry[key.field] }}
-              </div>
               <div v-else>
                 {{ entry[key.field] }}
               </div>

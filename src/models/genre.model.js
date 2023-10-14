@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
    
-    const Rating = sequelize.define("Rating", {
+    const Genre = sequelize.define("Genre", {
       id: {
         type: Sequelize.STRING,
         primaryKey: true
@@ -13,14 +13,14 @@ module.exports = (sequelize, Sequelize) => {
       },
     });
 
-    Rating.associate = models => {
-      Rating.belongsTo(models.Film, {
+    Genre.associate = models => {
+      Genre.belongsTo(models.Film, {
         foreignKey: {
           allowNull: false
         }
       });
     };
-    return Rating;
+    return Genre;
   };
 
   

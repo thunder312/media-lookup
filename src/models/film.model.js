@@ -1,29 +1,32 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Film = sequelize.define("Film", {
       id: {
-        type: Sequelize.STRING,
-        primaryKey: true
+        type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false
       },
       name: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       notes: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       rating: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         foreignKey: true
       },
       year: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       }
-    },
-    {
-      associate: function(){
-        Film.hasOne(Rating, {as: 'Rating'});
-      }
+    });
+
+    Film.associate = models => {
+      Film.hasOne(models.Rating, {
+        onDelete: "cascade"
+      });
+
+      Film.hasMany(models.Genre, {});
     }
-    );
 
     return Film;
   };
