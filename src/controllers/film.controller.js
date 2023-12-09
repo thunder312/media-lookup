@@ -40,7 +40,9 @@ exports.findAll = (req, res) => {
     var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
   
     Film.findAll({ where: condition }, 
-      { include: [ { model: Rating, where: { id: Film.rating } }] })
+      { include: [ { model: Rating, where: { id: Film.rating } }] },
+      { include: [ { model: Genre, where: { id: Film.genre } }] },
+      )
       .then(data => {
         res.send(data);
       })

@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       year: {
         type: DataTypes.STRING
+      },
+      genre: {
+        type: DataTypes.STRING
       }
     });
 
