@@ -25,7 +25,7 @@
           </tr>
         </tbody>
       </table>
-      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit" />
+      <!--b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit" />
       <div v-else-if="isButtonsDisplayed">
         <button v-if="limit < filteredDataLength" class="btn btn-primary" @click="setLimit(filteredDataLength)">
           Show all ({{ filteredDataLength }}) rows
@@ -33,7 +33,7 @@
         <button v-else class="btn btn-primary" @click="setLimit(initLimit)">
           Show less
         </button>
-      </div>
+      </div-->
     </div>
   </div>
 </template>
