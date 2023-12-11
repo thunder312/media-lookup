@@ -1,9 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const Film = sequelize.define("Film", {
       id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true,
+        unique: true
       },
       name: {
         type: DataTypes.STRING
@@ -18,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       year: {
         type: DataTypes.STRING
       },
-      genre: {
+      notes: {
+        type: DataTypes.STRING
+      },
+      url: {
         type: DataTypes.STRING
       }
     });
@@ -28,7 +33,18 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade"
       });
 
-      Film.hasMany(models.Genre, {});
+      Film.belongsToMany(
+        Genre, 
+        {
+            // this can be string (model name) or a Sequelize Model Object Class
+            // through is compulsory since v2
+            through: 'FilmsGenres',
+    
+            // GOTCHA
+            // note that this is the Parent's Id, not Child. 
+            foreignKey: 'id'
+        }
+    );    
     }
 
     return Film;

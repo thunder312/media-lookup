@@ -1,6 +1,8 @@
 const db = require("../models");
 const Film = db.films;
-const Rating = db.Rating;
+const Rating = db.rating;
+const FilmsGenres = db.filmsgenres;
+const Genre = db.genre;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -41,7 +43,8 @@ exports.findAll = (req, res) => {
   
     Film.findAll({ where: condition }, 
       { include: [ { model: Rating, where: { id: Film.rating } }] },
-      { include: [ { model: Genre, where: { id: Film.genre } }] },
+      { include: [ { model: FilmsGenres, where: { filmId: Film.id } }] },
+      { include: [ { model: Genre }] },
       )
       .then(data => {
         res.send(data);

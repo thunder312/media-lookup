@@ -2,8 +2,10 @@ module.exports = (sequelize, Sequelize) => {
    
     const Genre = sequelize.define("Genre", {
       id: {
-        type: Sequelize.STRING,
-        primaryKey: true
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        unique: true
       },
       name: {
         type: Sequelize.STRING,
@@ -14,11 +16,16 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     Genre.associate = models => {
-      Genre.belongsTo(models.Film, {
-        foreignKey: {
-          allowNull: false
+      Genre.belongsToMany(
+        Films, 
+        {
+            through: 'FilmsGenes',
+    
+            // GOTCHA
+            // note that this is the Child's Id, not Parent.
+            foreignKey: 'id'
         }
-      });
+    )
     };
     return Genre;
   };

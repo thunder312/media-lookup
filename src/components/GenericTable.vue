@@ -18,6 +18,9 @@
               <div v-if="key.field == 'year'">
                 {{ formatDate(entry[key.field]) }}
               </div>
+              <div v-else-if="key.field == 'url'">
+                <a v-if="entry[key.field] != null" target="_blank" :href="entry[key.field]">Info</a>
+              </div>
               <div v-else>
                 {{ entry[key.field] }}
               </div>
