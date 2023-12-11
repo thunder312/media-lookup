@@ -5,6 +5,11 @@
 npm install
 ```
 
+### Compiles complete application client AND server (mySQL DB server)
+```
+npm run start
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
