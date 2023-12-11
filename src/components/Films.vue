@@ -34,6 +34,8 @@ export default {
         { label: 'Notizen', field: 'notes', sortable: true },
         { label: 'erschienen am', field: 'year', sortable: true },
         { label: 'IMDB', field: 'url', sortable: true },
+        { label: 'Bewertung2', field: 'bewertung', sortable: true },
+        
       ],
       isPaginated: true,
       limit: 20,
@@ -45,7 +47,7 @@ export default {
       FilmDataService.getAll()
         .then(response => {
           this.films = response.data;
-          console.log(response.data);
+          console.log("Response: " + JSON.stringify(response.data[0]));
         })
         .catch(e => {
           console.log(e);

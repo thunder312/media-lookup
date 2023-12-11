@@ -41,12 +41,9 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
   
-    Film.findAll({ where: condition }, 
-      { include: [ { model: Rating, where: { id: Film.rating } }] },
-      { include: [ { model: FilmsGenres, where: { filmId: Film.id } }] },
-      { include: [ { model: Genre }] },
-      )
+    Film.findAll({ include: ['Rating']})
       .then(data => {
+        console.log(data);
         res.send(data);
       })
       .catch(err => {

@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+    const Rating = sequelize.define('Rating', {description: DataTypes.STRING});
     const Film = sequelize.define("Film", {
       id: {
         type: DataTypes.INTEGER,
@@ -14,38 +15,39 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       rating: {
-        type: DataTypes.STRING,
-        foreignKey: true
+        type: DataTypes.INTEGER,
       },
       year: {
-        type: DataTypes.STRING
+        type: DataTypes.DATEONLY
       },
       notes: {
         type: DataTypes.STRING
       },
       url: {
         type: DataTypes.STRING
+      },
+      bewertung:{
+        type: DataTypes.VIRTUAL,
+        get() {
+            return this.Rating?.get().description;
+        },
+        set(/*value*/) {
+            throw new Error('Versuch nicht ein Rating anzugeben!');
+        }
       }
+    },
+    {
+      tableName: 'Films',
+      timestamps: false,
+      freezeTableName: true
     });
 
-    Film.associate = models => {
-      Film.hasOne(models.Rating, {
-        onDelete: "cascade"
-      });
-
-      Film.belongsToMany(
-        Genre, 
-        {
-            // this can be string (model name) or a Sequelize Model Object Class
-            // through is compulsory since v2
-            through: 'FilmsGenres',
-    
-            // GOTCHA
-            // note that this is the Parent's Id, not Child. 
-            foreignKey: 'id'
-        }
-    );    
-    }
+    Film.hasOne(Rating, {
+      foreignKey: 'rating',
+    });
+    Rating.belongsTo(Film,{
+      foreignKey: 'id',
+    });
 
     return Film;
-  };
+};

@@ -1,20 +1,31 @@
-module.exports = (sequelize, Sequelize) => {
+const { DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {
    
-    const FilmsGenres = sequelize.define("FilmsGenres", {
-      filmId: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        unique: true
-      },
-      genreId: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-      },
-    });
+  const Film = sequelize.define('Film', {name: DataTypes.STRING});
+  const Genre = sequelize.define('Genre', {name: DataTypes.STRING});
+  const FilmsGenres = sequelize.define("FilmsGenres", {
+    filmId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Film,
+        key: 'id'
+      }
+    },
+    genreId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Genre,
+        key: 'id'
+      }
+    }
+  },
+  {
+    timestamps: false,
+    freezeTableName: true
+  });
 
-    FilmsGenres.associate = models => {};
-    return FilmsGenres;
-  };
+  Film.belongsToMany(Genre, { through: FilmsGenres });
+  Genre.belongsToMany(Film, { through: FilmsGenres });
 
-  
+}

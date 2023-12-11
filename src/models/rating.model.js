@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-   
+
     const Rating = sequelize.define("Rating", {
       id: {
         type: Sequelize.INTEGER,
@@ -7,21 +7,19 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         unique: true
       },
-      name: {
+    /*  name: {
         type: Sequelize.STRING,
-      },
+      },*/
       description: {
         type: Sequelize.STRING
       },
+    },
+    {
+      tableName: 'Rating',
+      timestamps: false,
+      freezeTableName: true
     });
 
-    Rating.associate = models => {
-      Rating.belongsTo(models.Film, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
     return Rating;
   };
 

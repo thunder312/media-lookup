@@ -13,13 +13,17 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING
       },
+    },
+    {
+      timestamps: false,
+      freezeTableName: true
     });
 
     Genre.associate = models => {
       Genre.belongsToMany(
         Films, 
         {
-            through: 'FilmsGenes',
+            through: 'FilmsGenres',
     
             // GOTCHA
             // note that this is the Child's Id, not Parent.
