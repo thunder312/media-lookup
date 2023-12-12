@@ -8,7 +8,7 @@
           <tr>
             <th v-for="(key, index) in columns" :class="{ active: sortKey === key }" :key="index" @click="sortBy(key)">
               {{ key.label }}
-              <span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow" />
+              <span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"></span>
             </th>
           </tr>
         </thead>

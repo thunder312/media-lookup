@@ -7,9 +7,9 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         unique: true
       },
-    /*  name: {
+      name: {
         type: Sequelize.STRING,
-      },*/
+      },
       description: {
         type: Sequelize.STRING
       },
@@ -18,6 +18,8 @@ module.exports = (sequelize, Sequelize) => {
       tableName: 'Rating',
       timestamps: false,
       freezeTableName: true
+    }, {
+      
     });
 
     return Rating;

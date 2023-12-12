@@ -1,5 +1,39 @@
 module.exports = (sequelize, DataTypes) => {
-    const Rating = sequelize.define('Rating', {description: DataTypes.STRING});
+  
+    const Rating = sequelize.define('Rating', {
+      description: {type: DataTypes.STRING},
+      name: {type: DataTypes.STRING}
+    },
+    {
+      tableName: 'Rating',
+      timestamps: false,
+      freezeTableName: true
+    });
+
+    const Genre = sequelize.define('Genre', {
+      description: {type: DataTypes.STRING},
+      name: {type: DataTypes.STRING}
+    },
+    {
+      tableName: 'Genre',
+      timestamps: false,
+      freezeTableName: true
+    });
+
+    const FilmsGenres = sequelize.define('FilmsGenres', {
+      filmId: {
+        type: DataTypes.INTEGER
+      },
+      genreId: {
+        type: DataTypes.INTEGER
+      }
+    },
+    {
+      tableName: 'FilmsGenres',
+      timestamps: false,
+      freezeTableName: true
+    });
+
     const Film = sequelize.define("Film", {
       id: {
         type: DataTypes.INTEGER,
@@ -14,9 +48,6 @@ module.exports = (sequelize, DataTypes) => {
       notes: {
         type: DataTypes.STRING
       },
-      rating: {
-        type: DataTypes.INTEGER,
-      },
       year: {
         type: DataTypes.DATEONLY
       },
@@ -26,15 +57,31 @@ module.exports = (sequelize, DataTypes) => {
       url: {
         type: DataTypes.STRING
       },
-      bewertung:{
+     rating:{
         type: DataTypes.VIRTUAL,
         get() {
             return this.Rating?.get().description;
         },
-        set(/*value*/) {
-            throw new Error('Versuch nicht ein Rating anzugeben!');
+        set(value) {
+            throw new Error('Versuch nicht ein Rating (' + value + ') anzugeben!');
         }
-      }
+      },
+      genre:{
+        type: DataTypes.VIRTUAL,
+        get() {  
+          var result = "";
+          for (let i = 0; i < this.Genres.length; i++) {
+            if(i > 0) {
+              result = result + ", ";
+            }
+            result = result + this.Genres[i].name;
+          }
+          return result;
+        },
+        set(value) {
+            throw new Error('Versuch nicht ein Genre (' + value + ') anzugeben!');
+        }
+      },
     },
     {
       tableName: 'Films',
@@ -43,11 +90,12 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Film.hasOne(Rating, {
-      foreignKey: 'rating',
+      foreignKey: 'id', // Rating.id
+      sourceKey: 'rating' // Film.rating
     });
-    Rating.belongsTo(Film,{
-      foreignKey: 'id',
-    });
+
+    Film.belongsToMany(Genre, { through: FilmsGenres }),
+    Genre.belongsToMany(Film, { through: FilmsGenres });
 
     return Film;
 };

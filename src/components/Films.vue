@@ -34,7 +34,6 @@ export default {
         { label: 'Notizen', field: 'notes', sortable: true },
         { label: 'erschienen am', field: 'year', sortable: true },
         { label: 'IMDB', field: 'url', sortable: true },
-        { label: 'Bewertung2', field: 'bewertung', sortable: true },
         
       ],
       isPaginated: true,

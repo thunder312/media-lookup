@@ -9,28 +9,12 @@ module.exports = (sequelize, Sequelize) => {
       },
       name: {
         type: Sequelize.STRING,
-      },
-      description: {
-        type: Sequelize.STRING
-      },
+      }
     },
     {
       timestamps: false,
       freezeTableName: true
     });
-
-    Genre.associate = models => {
-      Genre.belongsToMany(
-        Films, 
-        {
-            through: 'FilmsGenres',
-    
-            // GOTCHA
-            // note that this is the Child's Id, not Parent.
-            foreignKey: 'id'
-        }
-    )
-    };
     return Genre;
   };
 

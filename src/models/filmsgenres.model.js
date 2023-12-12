@@ -24,8 +24,4 @@ module.exports = (sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-
-  Film.belongsToMany(Genre, { through: FilmsGenres });
-  Genre.belongsToMany(Film, { through: FilmsGenres });
-
 }
