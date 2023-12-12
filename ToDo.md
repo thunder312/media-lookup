@@ -1,13 +1,17 @@
 # media-lookup
 
 ## Routing
-done
 
 ## Database
-Howto adress Rating sub-table in GenericTable
+
 ## Importer
 ### Books
 ``` by ISBN? ```
+
+## GenericTable
+``` make it one again :-) ```
+``` format-function switch case by name ```
+
 ## i18n
 
 ## themes?
