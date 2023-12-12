@@ -13,16 +13,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(entry, index) in displayedData" :key="index">
-            <td v-for="(key, index) in columns" :key="index">
-              <div v-if="key.field == 'year'">
-                {{ formatDate(entry[key.field]) }}
+          <tr v-bind:id="'row'  + index" v-for="(entry, index) in displayedData" :key="index">
+            <td v-bind:id="key.field" v-for="(key, index) in columns" :key="index">
+              <div v-if="key.field != 'url'">
+                {{ formatDataByFieldName(entry, key.field)}}
               </div>
-              <div v-else-if="key.field == 'url'">
+              <!--Looks like I can't format a link within my formatDataByFieldName -->
+              <div v-if="key.field == 'url'">
                 <a v-if="entry[key.field] != null" target="_blank" :href="entry[key.field]">Info</a>
-              </div>
-              <div v-else>
-                {{ entry[key.field] }}
               </div>
             </td>
           </tr>
@@ -157,6 +155,16 @@ export default {
     setLimit(limit) {
       this.limit = limit;
     },
+
+    formatDataByFieldName(entry, field) {
+      // console.log("field: " + field);
+      switch(field) {
+        case 'year':
+          return this.formatDate(entry[field]);
+        default:
+          return entry[field];
+      }
+    }
   },
 };
 </script>
