@@ -60,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
      rating:{
         type: DataTypes.VIRTUAL,
         get() {
-            return this.Rating?.get().description;
+            return this.Rating?.get().description + "\n( " + this.Rating?.get().id + " / 10 )";
         },
         set(value) {
             throw new Error('Versuch nicht ein Rating (' + value + ') anzugeben!');
