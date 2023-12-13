@@ -1,21 +1,25 @@
 $themes: (
   light: (
     backgroundLight: hsl(0, 0%, 100%),
-    backgroundDark: hsl(240, 7%, 97%),
+    backgroundDark: hsl(240, 1%, 23%),
+    backgroundDarker: hsl(0, 0%, 34%),
     textColor: hsl(0, 0%, 100%),
     textDark: hsl(0, 0%, 0%),
     textLight: hsl(200, 1%, 57%),
     contentColor: hsl(180, 1%, 73%),  
     iconColor: hsl(0, 0%, 0%),
+    toolbarBackgroundColor:hsl(200, 1%, 57%),
     
   ),
   dark: (
-    backgroundLight: hsl(200, 24%, 10%),
-    backgroundDark: hsl(0, 0%, 0%),
-    textColor: hsl(0, 0%, 100%),
+    backgroundLight: hsl(0, 0%, 0%),
+    backgroundDark: hsl(200, 24%, 10%),
+    backgroundDarker:hsl(240, 1%, 23%),
+    textColor: hsl(0, 0%, 0%),
     textDark: hsl(0, 0%, 100%),
-    textLight: hsl(0, 0%, 73%),
+    textLight:hsl(240, 1%, 23%),
     iconColor: hsl(0, 0%, 100%),
+    toolbarBackgroundColor:hsl(0, 0%, 100%),
   ),
 );
 
@@ -23,10 +27,31 @@ $color-schemes: (
   scheme-default: (
     backgroundColor: hsl(268, 100%, 50%),
     backgroundColorLight: hsl(268, 100%, 85%),
+    textColor: hsl(268, 100%, 85%),
+    textColorDark:  hsl(268, 100%, 50%),
+
+    backgroundReceipts: hsl(128, 100%, 30%),
+    textColorReceipts: hsl(128, 100%, 83%),
+    backgroundColorFilms: hsl(250, 100%, 50%),
+    textColorFilms: hsl(250, 100%, 70%),
+    backgroundColorBooks: hsl(189, 100%, 31%),
+    textColorBooks: hsl(189, 81%, 79%),
+
+
   ),
   scheme-orange: (
     backgroundColor: hsl(36, 100%, 45%),
     backgroundColorLight: hsl(36, 100%, 80%),
+    textColor:hsl(36, 100%, 80%),
+    textColorDark: hsl(36, 100%, 45%),
+
+    backgroundReceipts: hsl(128, 100%, 30%),
+    textColorReceipts: hsl(128, 100%, 83%),
+    backgroundColorFilms: hsl(250, 100%, 50%),
+    textColorFilms: hsl(250, 100%, 70%),
+    backgroundColorBooks: hsl(189, 100%, 31%),
+    textColorBooks: hsl(189, 81%, 79%),
+
   )
 );
 

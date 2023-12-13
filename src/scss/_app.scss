@@ -1,7 +1,8 @@
 @import 'themes';
+
 .linkbar {
   @include customize(theme) {
-    background-color: getValue(backgroundDark);
+    background-color: getValue(backgroundLight);
   }
   display: flex;
   flex-direction: row;
@@ -11,10 +12,42 @@
   height: auto;
   .link {
     @include customize(theme) {
-      color: getValue(iconColor);
+      color: getValue(textDark);
     }
     vertical-align: text-top;
     .image {
+        @include customize(theme) {
+        color: getValue(iconColor);
+        }
+       width: 30px;
+       height: 30px;
+       padding-right: 5px;
+     }
+      font-size: 30px;
+      width: auto;
+      text-decoration: none;
+      margin: 0 20px 0 20px;
+  }
+}
+.toolbar {
+  @include customize(theme) {
+    background-color: getValue(toolbarBackgroundColor);
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px 10px 10px 10px;
+  width: 100%;
+  height: auto;
+  .link {
+    @include customize(theme) {
+      color: getValue(textDark);
+    }
+    vertical-align: text-top;
+    .image {
+      @include customize(theme) {
+        color: getValue(iconColor);
+      }
        width: 30px;
        height: 30px;
        padding-right: 5px;
@@ -86,7 +119,7 @@
            @include customize(theme) {
              color: getValue(textColor);
            }
-           @include customize(color) {
+           @include customize(theme) {
              background-color: getValue(backgroundColor);
            }
          }
@@ -123,24 +156,29 @@
       border-collapse: separate;
       border-spacing: 2px;
       border-radius: 3px;
-      background-color: white;
+      @include customize(color) {
+        background-color: getValue(backgroundLight);
+      }
       margin: 10px;
   
       &.table-striped > tbody > tr:nth-child(even) > td,
       .table-striped > tbody > tr:nth-child(even) > th {
-        background-color: #f9f9f9;
+        @include customize(theme) {
+          background-color: getValue(backgroundDark);
+          color: getValue(textColor);
+        }
       }
   
       &.table-striped > tbody > tr:nth-child(odd) > td,
       .table-striped > tbody > tr:nth-child(odd) > th {
-        background-color: white;
+        @include customize(theme) {
+          background-color: getValue(backgroundLight);
+        }
       }
   
       th {
         padding: 8px;
-        background-color: #f9f9f9;
-        color: rgba(76, 89, 90, 0.66);
-        cursor: pointer;
+        // cursor: pointer;
   
         &.active {
           color: #4C595A;
@@ -177,4 +215,24 @@
       }
     }
   }
+
+.receipts {
+    @include customize(color) {
+      background-color: getValue(backgroundColorReceipts);
+      color: getValue(textColorReceipts);
+    }
+}
+th.films {
+    @include customize(color) {
+      background-color:getValue(backgroundColorFilms);
+      color: getValue(textColorFilms);
+    }
+}
+
+.books {
+    @include customize(color) {
+      background-color: getValue(backgroundColorBooks);
+      color: getValue(textColorBooks);
+    }
+}
    

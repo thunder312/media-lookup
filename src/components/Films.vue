@@ -1,13 +1,11 @@
 <template>
   <div class="section">
     <div class="sub-section">
-      <GenericTable :data="films" :columns="tableColumns" :is-Paginated="isPaginated" :init-sort-key="name"
+      <GenericTable :type="type" :data="films" :columns="tableColumns" :is-Paginated="isPaginated" :init-sort-key="name"
         :init-limit="limit" :tableName="tableName"></GenericTable>
       </div>
     </div>
 </template>
-
-   
 <script>
 import GenericTable from './GenericTable.vue'
 import FilmDataService from '../services/FilmDataService'
@@ -40,7 +38,8 @@ export default {
       ],
       isPaginated: true,
       limit: 20,
-      tableName: 'Filme'
+      tableName: 'Filme',
+      type: 'films'
     }
   },
   methods: {

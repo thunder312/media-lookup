@@ -9,8 +9,9 @@
       </div>
       <div class="page">
           <LinkBar/>
+          <ToolBar/>
         <div class="content">
-          <router-view></router-view>
+          <router-view></router-view> <!-- Reperäsentaion der über den Link gewählten Seite -->
         </div>
       </div>
     </div>
@@ -20,11 +21,12 @@
 
 <script>
 import LinkBar from './components/LinkBar.vue'
+import ToolBar from './components/ToolBar.vue'
 
 export default {
   name: 'App',
   components: {
-    LinkBar
+    LinkBar, ToolBar
   }
 }
 </script>
