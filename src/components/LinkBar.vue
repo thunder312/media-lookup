@@ -1,9 +1,22 @@
 <template>
 <div class="linkbar">
     <router-link to="/" class="link"><img class="image" src="@/assets/icons/home.svg"/>Home</router-link>
-    <router-link to="/receipts" class="link"><img class="image" src="@/assets/icons/rezept.svg"/>Rezepte</router-link>
-    <router-link to="/films" class="link"><img class="image" src="@/assets/icons/film.svg"/>Filme</router-link>
-    <router-link to="/books" class="link"><img class="image" src="@/assets/icons/buch.svg"/>Bücher</router-link>
+
+    <router-link to="/receipts" class="link" active-class="receipts" 
+      :class="{active: $route.matched.some(({ name }) => name === 'subcategory')}">
+      <img class="image" src="@/assets/icons/rezept.svg"/>Rezepte
+    </router-link>
+
+    <router-link to="/films" class="link" active-class="films" 
+      :class="{active: $route.matched.some(({ name }) => name === 'subcategory')}">
+      <img class="image" src="@/assets/icons/film.svg"/>Filme
+    </router-link>
+
+    <router-link to="/books" class="link" active-class="books" 
+      :class="{active: $route.matched.some(({ name }) => name === 'subcategory')}">
+      <img class="image" src="@/assets/icons/buch.svg"/>Bücher
+    </router-link>
+
   </div>
 </template>
 <script>
