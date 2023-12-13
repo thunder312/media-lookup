@@ -32,6 +32,8 @@ export default {
         { label: 'Genre', field: 'genre', sortable: true },
         { label: 'Bewertung', field: 'rating', sortable: true },
         { label: 'Notizen', field: 'notes', sortable: true },
+        { label: 'Medium', field: 'media', sortable: true },
+        { label: 'Ort', field: 'location', sortable: true },
         { label: 'erschienen am', field: 'year', sortable: true },
         { label: 'IMDB', field: 'url', sortable: true },
         

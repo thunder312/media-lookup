@@ -20,6 +20,24 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true
     });
 
+    const Media = sequelize.define('Media', {
+      name: {type: DataTypes.STRING}
+    },
+    {
+      tableName: 'Media',
+      timestamps: false,
+      freezeTableName: true
+    });
+
+    const Location = sequelize.define('Location', {
+      name: {type: DataTypes.STRING}
+    },
+    {
+      tableName: 'Rating',
+      timestamps: false,
+      freezeTableName: true
+    });
+
     const FilmsGenres = sequelize.define('FilmsGenres', {
       filmId: {
         type: DataTypes.INTEGER
@@ -66,6 +84,24 @@ module.exports = (sequelize, DataTypes) => {
             throw new Error('Versuch nicht ein Rating (' + value + ') anzugeben!');
         }
       },
+      media:{
+        type: DataTypes.VIRTUAL,
+        get() {
+            return this.Media?.get().name;
+        },
+        set(value) {
+            throw new Error('Versuch nicht ein Media (' + value + ') anzugeben!');
+        }
+      },
+      location:{
+        type: DataTypes.VIRTUAL,
+        get() {
+            return this.Location?.get().name;
+        },
+        set(value) {
+            throw new Error('Versuch nicht eine Location (' + value + ') anzugeben!');
+        }
+      },
       ratingPoints:{
         type: DataTypes.VIRTUAL,
         get() {
@@ -101,6 +137,16 @@ module.exports = (sequelize, DataTypes) => {
     Film.hasOne(Rating, {
       foreignKey: 'id', // Rating.id
       sourceKey: 'rating' // Film.rating
+    });
+
+    Film.hasOne(Media, {
+      foreignKey: 'id', // Media.id
+      sourceKey: 'media' // Film.media
+    });
+
+    Film.hasOne(Location, {
+      foreignKey: 'id', // Location.id
+      sourceKey: 'location' // Film.media
     });
 
     Film.belongsToMany(Genre, { through: FilmsGenres }),

@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const Rating = sequelize.define("Rating", {
+    const Location = sequelize.define("Location", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -15,14 +15,14 @@ module.exports = (sequelize, Sequelize) => {
       },
     },
     {
-      tableName: 'Rating',
+      tableName: 'Location',
       timestamps: false,
       freezeTableName: true
     }, {
       
     });
 
-    return Rating;
+    return Location;
   };
 
   

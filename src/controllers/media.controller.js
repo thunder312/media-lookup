@@ -1,5 +1,5 @@
 const db = require("../models");
-const Rating = db.Rating;
+const Media = db.Media;
 const Op = db.Sequelize.Op;
 
 // Create and Save
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
         return;
     }
 
-     // Create a Rating
+     // Create a Media
   const rating = {
     name: req.body.name,
     description: req.body.description,
@@ -20,26 +20,26 @@ exports.create = (req, res) => {
 
   };
 
-  // Save Rating in the database
-  Rating.create(rating)
+  // Save Media in the database
+  Media.create(rating)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Rating."
+          err.message || "Some error occurred while creating the Media."
       });
     });
 
 };
 
-// Retrieve all Ratings from the database.
+// Retrieve all Medias from the database.
 exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
   
-    Rating.findAll({ where: condition },)
+    Media.findAll({ where: condition },)
       .then(data => {
         res.send(data);
       })
@@ -51,90 +51,90 @@ exports.findAll = (req, res) => {
       });
   };
 
-// Find a single Rating with an id
+// Find a single Media with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Rating.findByPk(id, )
+    Media.findByPk(id, )
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Rating with id=${id}.`
+            message: `Cannot find Media with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Rating with id=" + id
+          message: "Error retrieving Media with id=" + id
         });
       });
 };
 
-// Update a Rating by the id in the request
+// Update a Media by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Rating.update(req.body, {
+    Media.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Rating was updated successfully."
+            message: "Media was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Rating with id=${id}. Maybe Rating was not found or req.body is empty!`
+            message: `Cannot update Media with id=${id}. Maybe Media was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Rating with id=" + id
+          message: "Error updating Media with id=" + id
         });
       });
 };
 
-// Delete a Rating with the specified id in the request
+// Delete a Media with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Rating.destroy({
+    Media.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Rating was deleted successfully!"
+            message: "Media was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Rating with id=${id}. Maybe Rating was not found!`
+            message: `Cannot delete Media with id=${id}. Maybe Media was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Rating with id=" + id
+          message: "Could not delete Media with id=" + id
         });
       });
 };
 
-// Delete all Rating from the database.
+// Delete all Media from the database.
 exports.deleteAll = (req, res) => {
-    Rating.destroy({
+    Media.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Ratings were deleted successfully!` });
+          res.send({ message: `${nums} Medias were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all ratings."
+              err.message || "Some error occurred while removing all medias."
           });
         });
 };
