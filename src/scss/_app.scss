@@ -1,63 +1,6 @@
 @import 'themes';
 
-.linkbar {
-  @include customize(theme) {
-    background-color: getValue(backgroundLight);
-  }
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 10px 10px 10px 10px;
-  width: 100%;
-  height: auto;
-  .link {
-    @include customize(theme) {
-      color: getValue(textDark);
-    }
-    vertical-align: text-top;
-    .image {
-        @include customize(theme) {
-        color: getValue(iconColor);
-        }
-       width: 30px;
-       height: 30px;
-       padding-right: 5px;
-     }
-      font-size: 30px;
-      width: auto;
-      text-decoration: none;
-      margin: 0 20px 0 20px;
-  }
-}
-.toolbar {
-  @include customize(theme) {
-    background-color: getValue(toolbarBackgroundColor);
-  }
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 10px 10px 10px 10px;
-  width: 100%;
-  height: auto;
-  .link {
-    @include customize(theme) {
-      color: getValue(textDark);
-    }
-    vertical-align: text-top;
-    .image {
-      @include customize(theme) {
-        color: getValue(iconColor);
-      }
-       width: 30px;
-       height: 30px;
-       padding-right: 5px;
-     }
-      font-size: 30px;
-      width: auto;
-      text-decoration: none;
-      margin: 0 20px 0 20px;
-  }
-}
+
 .window {
     display: flex;
      width: 100%;
@@ -125,8 +68,7 @@
          }
        }
      }
-   }
-   
+   }   
    html, body, .wrapper {
      height: 100%;
      width: 100%;
@@ -140,7 +82,6 @@
      display: flex;
      flex: 1;
    }
-
    .container {
     display: flex;
     flex-direction: column;
@@ -215,7 +156,76 @@
       }
     }
   }
+  .linkbar {
+    @include customize(theme) {
+      background-color: getValue(backgroundLight);
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    height: auto;
+    .link {
+      @include customize(theme) {
+        color: getValue(textDark);
+      }
+      vertical-align: text-top;
+      .image {
+          @include customize(theme) {
+          color: getValue(iconColor);
+          }
+         width: 30px;
+         height: 30px;
+         padding-right: 5px;
+       }
+        padding: 5px 10px 5px 10px;
+        font-size: 20px;
+        width: auto;
+        text-decoration: none;
+        margin: 0 20px 0 20px;
+    }
+  }
+  .toolbar {
+    @include customize(theme) {
+      background-color: getValue(toolbarBackgroundColor);
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    height: auto;
+    .button {
+      @include customize(theme) {
+        color: getValue(textDark);
+      }
+      border: none;
+      border-radius: 3px;
+      padding: 0 10px 0 10px;
+      vertical-align: text-top;
+      font-size: 20px;
+      width: auto;
+      text-decoration: none;
+      margin: 0 20px 0 20px;
 
+
+      .image {
+        @include customize(theme) {
+          color: getValue(iconColor);
+        }
+          width: 30px;
+          height: 30px;
+          padding-right: 5px;
+        }
+    }
+
+    .modal-mask {
+      padding-left: 20px;
+    }
+
+
+  }
 .receipts {
     @include customize(color) {
       background-color: getValue(backgroundColorReceipts);
@@ -228,7 +238,6 @@
       color: getValue(textColorFilms);
     }
 }
-
 .books {
     @include customize(color) {
       background-color: getValue(backgroundColorBooks);
