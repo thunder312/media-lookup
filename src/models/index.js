@@ -23,5 +23,7 @@ db.films = require("./film.model.js")(sequelize, Sequelize);
 db.rating = require("./rating.model.js")(sequelize, Sequelize);
 db.filmsgenres = require("./filmsgenres.model.js")(sequelize, Sequelize);
 db.genre = require("./genre.model.js")(sequelize, Sequelize);
+db.media = require("./media.model.js")(sequelize, Sequelize);
+db.location = require("./location.model.js")(sequelize, Sequelize);
 
 module.exports = db;

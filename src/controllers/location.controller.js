@@ -13,11 +13,8 @@ exports.create = (req, res) => {
     }
 
      // Create a Location
-  const rating = {
-    name: req.body.name,
-    description: req.body.description,
-    notes: req.body.notes,
-
+  const location = {
+    name: req.body.name
   };
 
   // Save Location in the database
@@ -46,7 +43,7 @@ exports.findAll = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving ratings."
+            err.message || "Some error occurred while retrieving locations."
         });
       });
   };

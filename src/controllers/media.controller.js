@@ -13,15 +13,13 @@ exports.create = (req, res) => {
     }
 
      // Create a Media
-  const rating = {
-    name: req.body.name,
-    description: req.body.description,
-    notes: req.body.notes,
+  const media = {
+    name: req.body.name
 
   };
 
   // Save Media in the database
-  Media.create(rating)
+  Media.create(media)
     .then(data => {
       res.send(data);
     })
@@ -46,7 +44,7 @@ exports.findAll = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving ratings."
+            err.message || "Some error occurred while retrieving medias."
         });
       });
   };

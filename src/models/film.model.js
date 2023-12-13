@@ -87,7 +87,7 @@ module.exports = (sequelize, DataTypes) => {
       media:{
         type: DataTypes.VIRTUAL,
         get() {
-            return this.Media?.get().name;
+            return this.Medium?.get().name;
         },
         set(value) {
             throw new Error('Versuch nicht ein Media (' + value + ') anzugeben!');
