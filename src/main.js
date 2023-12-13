@@ -6,6 +6,7 @@ import Receipts from './components/Receipts.vue';
 import Books from './components/Books.vue';
 import Films from './components/Films.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
+import mitt from 'mitt'; // event dispatcher (emitter)
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
@@ -17,6 +18,8 @@ const router = createRouter({
     ]
   });
 
-createApp(App)
-.use(router)
-.mount('#app')
+const emitter = mitt();
+const app = createApp(App);
+
+app.config.globalProperties.emitter = emitter;
+app.use(router).mount('#app');
