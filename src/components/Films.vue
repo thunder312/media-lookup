@@ -32,7 +32,7 @@ export default {
         { label: 'Notizen', field: 'notes', sortable: true },
         { label: 'Medium', field: 'media', sortable: true },
         { label: 'Ort', field: 'location', sortable: true },
-        { label: 'erschienen am', field: 'year', sortable: true },
+        { label: 'Start', field: 'year', sortable: true },
         { label: 'IMDB', field: 'url', sortable: true },
         
       ],
