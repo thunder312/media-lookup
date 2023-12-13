@@ -39,7 +39,8 @@ export default {
       isPaginated: true,
       limit: 20,
       tableName: 'Filme',
-      type: 'films'
+      type: 'films',
+      name: 'name'
     }
   },
   methods: {

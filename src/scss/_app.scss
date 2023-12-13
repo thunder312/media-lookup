@@ -122,10 +122,11 @@
         // cursor: pointer;
   
         &.active {
-          color: #4C595A;
+          color: #FFFFFF;
   
           & .arrow {
             opacity: 1;
+            color: #FFFFFF;
           }
         }
       }
@@ -152,7 +153,7 @@
       }
   
       td {
-        padding: 8px;
+        padding: 2px;
       }
     }
   }
@@ -232,11 +233,68 @@
       background-color: getValue(backgroundColorReceipts);
       color: getValue(textColorReceipts);
     }
+
+      // ID
+      th:nth-child(1) {
+        width: 60px;
+      }
+      // Name
+      th:nth-child(2) {
+        width: 280px;
+      }
+      // Genre
+      th:nth-child(3) {
+        width: 200px;
+      }
+      // Bewertung
+      th:nth-child(4) {
+        width: 150px;
+      }
+      // Notizen
+      th:nth-child(5) {
+        width: 250px;
+      }
 }
 .films {
     @include customize(color) {
       background-color:getValue(backgroundColorFilms);
       color: getValue(textColorFilms);
+    }
+    // ID
+    th:nth-child(1) {
+      width: 60px;
+    }
+    // Name
+    th:nth-child(2) {
+      width: 280px;
+    }
+    // Genre
+    th:nth-child(3) {
+      width: 200px;
+    }
+    // Bewertung
+    th:nth-child(4) {
+      width: 150px;
+    }
+    // Notizen
+    th:nth-child(5) {
+      width: 250px;
+    }
+    // Medium
+    th:nth-child(6) {
+      width: 100px;
+    }
+    // Ort
+    th:nth-child(7) {
+      width: 100px;
+    }
+    // Start
+    th:nth-child(8) {
+      width: 100px;
+    }
+    // IMDB
+    th:nth-child(9) {
+      width: 80px;
     }
 }
 .books {

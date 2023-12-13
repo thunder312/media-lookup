@@ -5,10 +5,10 @@
       <input v-model.trim="filterKey" placeholder="Suchen..." class="search" />
       <table class="table-striped">
         <thead>
-          <tr>
-            <th v-for="(key, index) in columns" :class="[{ active: sortKey === key }, type]" :key="index" @click="sortBy(key)">
+          <tr :class="type">
+            <th v-for="(key, index) in columns" :class="[{ active: sortKey === key }]" :key="index" @click="sortBy(key.field)">
               {{ key.label }}
-              <!--span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"></span-->
+              <span :class="sortOrders[key.field] > 0 ? 'asc' : 'dsc'" class="arrow"></span>
             </th>
           </tr>
         </thead>
@@ -83,9 +83,9 @@ export default {
     initSortOrders = this.columns.reduce((obj, key) => {
       const acc = Object.assign({}, obj);
       if (this.initSortKey === key.field) {
-        acc[key.field] = -1;
-      } else {
         acc[key.field] = 1;
+      } else {
+        acc[key.field] = -1;
       }
       return acc;
     }, {});
@@ -146,6 +146,7 @@ export default {
       return date.format('DD.MM.YYYY');
     },
     sortBy(key) {
+      console.log('Now sorting by: ' + key + " " + this.sortOrders[key]);
       this.sortKey = key;
       this.sortOrders[key] = this.sortOrders[key] * -1;
     },

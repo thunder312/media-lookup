@@ -34,7 +34,8 @@ export default {
       isPaginated: true,
       limit: 20,
       tableName: 'Rezepte',
-      type: 'receipts'
+      type: 'receipts',
+      name: 'name',
     }
   },
   methods: {
