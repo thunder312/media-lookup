@@ -222,7 +222,7 @@
       color: getValue(textColorReceipts);
     }
 }
-th.films {
+.films {
     @include customize(color) {
       background-color:getValue(backgroundColorFilms);
       color: getValue(textColorFilms);
