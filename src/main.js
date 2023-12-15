@@ -7,6 +7,7 @@ import Books from './components/Books.vue';
 import Films from './components/Films.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
 import mitt from 'mitt'; // event dispatcher (emitter)
+import vue3GoogleLogin from 'vue3-google-login'
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
@@ -22,10 +23,13 @@ const emitter = mitt();
 const app = createApp(App);
 
 app.config.globalProperties.emitter = emitter;
-app.use(router)
-.use(GoogleAPIs, {
-  clientId: '1093010721849-m6ll2h1glpuj9jqkdo3cj57te08o90uk.apps.googleusercontent.com',
-  discoveryDocs: ['https://www.googleapis.com/books/v1/volumes'],
-  scope: 'https://www.googleapis.com/auth/books.readonly',
-})
-.mount('#app');
+
+const config = {
+api_key: "AIzaSyAwsXzNFECgvbXHFS5JBKKBwHO2vLQnEYI",
+clientId: '1093010721849-m6ll2h1glpuj9jqkdo3cj57te08o90uk.apps.googleusercontent.com',
+discoveryDocs: ['https://www.googleapis.com/books/v1/volumes'],
+scope: 'https://www.googleapis.com/auth/books.readonly'}
+
+app.use(vue3GoogleLogin, config);
+app.use(router);
+app.mount('#app');

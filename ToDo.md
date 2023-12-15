@@ -6,7 +6,7 @@
 
 ## Importer
 ### Books
-``` by ISBN? ```
+``` by ISBN with Google API (in progress) ```
 
 ## GenericTable
 ``` make it one again :-) ```
@@ -17,4 +17,5 @@
 
 ## i18n
 
-## themes?
+## themes
+``` done some first steps  ```
