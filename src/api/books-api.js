@@ -1,5 +1,4 @@
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-//const BASE_URL_ID = "https://www.googleapis.com/books/v1/volumes/";
 const maxResults = "maxResults=";
 const orderBy = "orderBy=";
 const printType = "printType=";

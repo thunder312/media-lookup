@@ -25,10 +25,11 @@ const app = createApp(App);
 app.config.globalProperties.emitter = emitter;
 
 const config = {
-api_key: "AIzaSyAwsXzNFECgvbXHFS5JBKKBwHO2vLQnEYI",
-clientId: '1093010721849-m6ll2h1glpuj9jqkdo3cj57te08o90uk.apps.googleusercontent.com',
-discoveryDocs: ['https://www.googleapis.com/books/v1/volumes'],
-scope: 'https://www.googleapis.com/auth/books.readonly'}
+  api_key: process.env.VUE_APP_GOOGLE_API_KEY,
+  clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
+  discoveryDocs: process.env.VUE_APP_GOOGLE_DISCOVERY_DOCS,
+  scope: process.env.VUE_APP_GOOGLE_SCOPE
+}
 
 app.use(vue3GoogleLogin, config);
 app.use(router);

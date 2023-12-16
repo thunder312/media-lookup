@@ -2,15 +2,15 @@
   <div class="section">
     <div class="title">Hauptseite</div>
   <div class="sub-section">
-    <GoogleApiTester msg="Google APIs example - oAuth2"></GoogleApiTester>
+    <GoogleLoginButton></GoogleLoginButton>
   </div>
   </div>
 </template>
 <script>
-import GoogleApiTester from './GoogleApiTester.vue'
+import GoogleLoginButton from './GoogleLoginButton.vue'
 export default {
   name: 'MediaLookup',
-  components: {GoogleApiTester},
+  components: {GoogleLoginButton},
   props: {
     msg: String
   }

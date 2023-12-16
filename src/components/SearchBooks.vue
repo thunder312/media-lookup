@@ -1,6 +1,4 @@
 <template>
-    <GoogleLogin :callback="this.callback"/>
-    <br/><br/>
     <h3>Suche Buch</h3>
     <table class="inputTable">
         <tr>
@@ -82,7 +80,7 @@ import { globalSearch } from "../api/books-api.js";
 import { searchByIsbn } from "../api/books-api.js";
 
 export default {
-  name: 'GoogleApiTester',
+  name: 'SearchBook',
   components: { },
   data () {
     return {
