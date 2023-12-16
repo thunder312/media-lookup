@@ -27,6 +27,10 @@
                   <td class="category">Beschreibung:</td>
                   <td>{{ films[index].result.detailedDescription?.articleBody }}</td>
                 </tr>
+                <tr>
+                  <td class="category">URL:</td>
+                  <td><a v-bind:href="films[index].result.detailedDescription?.url" target="_blank">Wiki</a>  </td>
+                </tr>
             </div>
           </tbody>
         </table>
