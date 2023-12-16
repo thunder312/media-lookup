@@ -12,7 +12,6 @@
     <div> 
     <div v-if="films != null">
       <div class="result">Ergebnisse {{ resultDisplay(films.length) }}</div>
-      <div class="result">Films: {{ films }}</div>
       <br/>
         <table class="resultTable" >
           <tbody>
@@ -22,28 +21,12 @@
                 </tr>
                 <tr>
                   <td class="category">Titel:</td>
-                  <td>{{ films.itemListElement[index].name }}</td>
+                  <td>{{ films[index].result.name }}</td>
                 </tr>
                 <tr>
                   <td class="category">Beschreibung:</td>
-                  <td>{{ films.itemListElement[index].detailedDescription.articleBody }}</td>
+                  <td>{{ films[index].result.detailedDescription?.articleBody }}</td>
                 </tr>
-                <!--tr>
-                  <td class="category">Autor:</td>
-                  <td>{{ films[index].volumeInfo.authors }}</td>
-                </tr>
-                <tr>
-                  <td class="category">Veröffentlichung:</td>
-                  <td>{{ formatDate(films[index].volumeInfo.publishedDate) }}</td>
-                </tr>
-                <tr>
-                  <td class="category">Genres:</td>
-                  <td>{{ films[index].volumeInfo.categories}}</td>
-                </tr>
-                <tr>
-                  <td class="category">Seitenzahl:</td>
-                  <td>{{ films[index].volumeInfo.pageCount }}</td>
-                </tr-->
             </div>
           </tbody>
         </table>
@@ -58,7 +41,7 @@
 </template>
 
 <script>
-import { globalSearch } from "../api/films-api.js";
+import { globalSearch /*, toFile*/ } from "../api/films-api.js";
 
 export default {
   name: 'SearchFilms',
@@ -81,19 +64,23 @@ export default {
   methods: {
     async search() {
       await globalSearch(this.inputTitle).then((response) => {
-        if (response.items) {
-          console.log("response.items: " + response.items);
-          this.films = response.items;
+        console.log("response.itemListElement: " + response.itemListElement);
+        if (response.itemListElement) {
+          this.films = response.itemListElement;
         } else {
           this.films = {};
-          this.noResults = true;
         }
-      });
+      })
     },
     formatDate(dateString) {
       if(dateString) {
         const date = new Date(dateString);
         return new Intl.DateTimeFormat('de-DE', {year: "numeric", month: "2-digit", day: "2-digit"}).format(date);
+      } else {return "";}
+    },
+    notUndefined(data) {
+      if(data) {
+        return data;
       } else {return "";}
     },
     resultDisplay(length) {

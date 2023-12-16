@@ -105,7 +105,6 @@ export default {
           this.books = response.items;
         } else {
           this.books = {};
-          this.noResults = true;
         }
       });
     },
@@ -115,7 +114,6 @@ export default {
           this.books = response.items;
         } else {
           this.books = {};
-          this.noResults = true;
         }
       });
     },

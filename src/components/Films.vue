@@ -50,7 +50,6 @@ export default {
       FilmDataService.getAll()
         .then(response => {
           this.films = response.data;
-          console.log("Response: " + JSON.stringify(response.data[0]));
         })
         .catch(e => {
           console.log(e);
