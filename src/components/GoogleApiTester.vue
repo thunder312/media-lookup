@@ -19,10 +19,10 @@
         </tr>   
     </table>
     <div> 
-      <pre v-if="books != null">
-        <div>Ergebnisse insgesamt: {{ books.length }}</div>
-
-        <table class="resultTable">
+    <div v-if="books != null">
+      <div class="result">Ergebnisse {{ resultDisplay(books.length) }}</div>
+      <br/>
+        <table class="resultTable" >
           <tbody>
             <div v-for="(book, index) in books" :key='book.id'>
               <tr>
@@ -67,10 +67,13 @@
             </div>
           </tbody>
         </table>
-
         <!-- Das ganze Json -->
-        {{ JSON.stringify(this.books, null, 2) }}
-      </pre>
+        <div v-if="books.length > 0">
+          <br/>
+          <pre>{{ JSON.stringify(this.books, null, 2) }}</pre>
+        </div>
+      </div>
+
     </div>
 </template>
 
@@ -138,6 +141,24 @@ export default {
         const date = new Date(dateString);
         return new Intl.DateTimeFormat('de-DE', {year: "numeric", month: "2-digit", day: "2-digit"}).format(date);
       } else {return "";}
+    },
+    resultDisplay(length) {
+      console.log("resultDisplay: " + length);
+      let result = "";
+        switch(length) {
+          case 0:
+          case undefined:
+            result = ": 0";
+            break;
+          case 40:
+            result =  "limitiert auf 40."
+            break;
+          default:
+            result =  ": " + length;
+            break;
+        }
+        console.log("result: " + result);
+      return result;
     }
   },
 }
@@ -157,7 +178,11 @@ table.inputTable {
 }
 
 table.resultTable {
+  .result {
+    width: 250px;
+  }
   .separator {
+    padding-top: 15px;
     font-weight: bold;
     font-size: 20px;
     color: blue;

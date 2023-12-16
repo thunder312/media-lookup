@@ -5,7 +5,6 @@ const orderBy = "orderBy=";
 const printType = "printType=";
 
 export async function globalSearch(query) {
-    console.log("globalSearch(" + query + ")");
     return new Promise((resolve, reject) => {
         fetch(BASE_URL +
                 query +
