@@ -6,7 +6,8 @@
 
 ## Importer
 ### Books
-``` by ISBN with Google API (in progress) ```
+``` by ISBN with Google API ready; see Home view ```
+``` translate {{ books[index].volumeInfo.description}} to german  on the fly? ``` 
 
 ## GenericTable
 ``` make it one again :-) ```

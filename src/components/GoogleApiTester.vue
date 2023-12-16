@@ -37,12 +37,20 @@
                   <td>{{ books[index].volumeInfo.subtitle }}</td>
                 </tr>
                 <tr>
+                  <td class="category">Beschreibung:</td>
+                  <td>{{ books[index].volumeInfo.description}}</td>
+                </tr>
+                <tr>
                   <td class="category">Autor:</td>
                   <td>{{ books[index].volumeInfo.authors }}</td>
                 </tr>
                 <tr>
                   <td class="category">Veröffentlichung:</td>
                   <td>{{ formatDate(books[index].volumeInfo.publishedDate) }}</td>
+                </tr>
+                <tr>
+                  <td class="category">Genres:</td>
+                  <td>{{ books[index].volumeInfo.categories}}</td>
                 </tr>
                 <tr>
                   <td class="category">Seitenzahl:</td>
@@ -61,7 +69,7 @@
         </table>
 
         <!-- Das ganze Json -->
-        <!--{{ JSON.stringify(this.books, null, 2) }}-->
+        {{ JSON.stringify(this.books, null, 2) }}
       </pre>
     </div>
 </template>
