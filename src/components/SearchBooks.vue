@@ -80,7 +80,7 @@ import { globalSearch } from "../api/books-api.js";
 import { searchByIsbn } from "../api/books-api.js";
 
 export default {
-  name: 'SearchBook',
+  name: 'SearchBooks',
   components: { },
   data () {
     return {

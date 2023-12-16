@@ -1,4 +1,5 @@
 <template>
+  <div><SearchFilms/></div>
   <div class="section">
     <div class="sub-section">
       <GenericTable :type="type" :data="films" :columns="tableColumns" :is-Paginated="isPaginated" :init-sort-key="name"
@@ -8,12 +9,13 @@
 </template>
 <script>
 import GenericTable from './GenericTable.vue'
+import SearchFilms from './SearchFilms.vue'
 import FilmDataService from '../services/FilmDataService'
 export default {
   // eslint-disable-next-line
   name: 'Films',
   components: {
-    GenericTable
+    GenericTable, SearchFilms
   },
   props: {
     msg: String,
