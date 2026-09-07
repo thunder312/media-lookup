@@ -32,10 +32,15 @@ GitHub**. Datei ist jetzt via `.gitignore` (`client_secret_*.json`) ignoriert, l
 ## 3. npm-Vulnerabilities
 - [x] `nanoid` 3.3.7 → 3.3.18 (GHSA-xwg4-73v4-xw9w), erledigt 2026-09-07. War nur transitive
       Build-Abhängigkeit (`@vue/cli-service → postcss`), nicht im Runtime-Bundle.
+- [x] `node-sass` → **Dart Sass** (`sass`), erledigt 2026-09-07. `node-sass@8` hat keine Binary
+      für Node 22, `npm run build` brach ab. Läuft jetzt durch (nur Dart-Sass-Deprecation-Warnings:
+      legacy JS API, `@import`, `map-get`/`map-merge` – erst bei Dart Sass 3.0 relevant, siehe unten).
 - [ ] `npm audit` meldet weiterhin viele Funde – fast alles im veralteten `@vue/cli`-Tooling
       (Build-Zeit, nicht Runtime). Bei Wiederaufnahme überlegen:
   - Migration `@vue/cli` (EOL) → **Vite** räumt den Großteil auf.
-  - `node-sass` (deprecated) → `sass` (Dart Sass).
+- [ ] SCSS auf Modul-System umstellen (`@use`/`map.get` statt `@import`/`map-get`) in
+      `src/scss/_themes.scss` + `_app.scss`, sonst bricht es mit Dart Sass 3.0.
+      Automatischer Migrator: `npx sass-migrator module src/scss/*.scss`.
 
 ## 4. `MediaLookup/`-Unterordner
 Enthält nur DB-Dumps (`db/Dump20231213/*.sql`), keinen Code. Prüfen ob noch gebraucht, sonst
