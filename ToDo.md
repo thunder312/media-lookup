@@ -1,5 +1,48 @@
 # media-lookup
 
+---
+
+# 🔴 Sicherheit / Aufräumen (Stand 2026-09-07)
+
+Falls du das Projekt wieder aufnimmst – zuerst hier durch:
+
+## 1. Google API-Key rotieren (dringend – Key ist öffentlich)
+Der Key `AIzaSy…` (Google-Cloud-Projekt `media-lookup`) war früher **hartkodiert in `src/main.js`**
+(Commits `b5fb1a9` und `f929d63`, beide gepusht) und steht damit in der **öffentlichen Git-History**
+auf `github.com/thunder312/media-lookup`. `.gitignore` ändert daran nichts mehr.
+
+- [ ] In der [Google Cloud Console](https://console.cloud.google.com/apis/credentials) → Projekt
+      `media-lookup` den alten API-Key **löschen** und einen neuen erstellen.
+- [ ] Neuen Key **nur** in `.env.local` eintragen (`VUE_APP_GOOGLE_API_KEY=…`) – ist gitignored.
+- [ ] Neuen Key **einschränken**: HTTP-Referrer (eigene Domain / localhost) + API-Restrictions
+      (nur genutzte APIs: Knowledge Graph Search, Books, …).
+
+Hinweis: `VUE_APP_*` wird ins Client-Bundle einkompiliert und ist im Browser sowieso sichtbar –
+ein Frontend-API-Key ist nie geheim, nur über Restriktionen absicherbar.
+
+## 2. OAuth Client Secret rotieren (optional)
+`MediaLookup/client_secret_…googleusercontent.com.json` enthält ein echtes OAuth Client Secret
+(`GOCSPX-…`). Es war nur in einem lokalen Commit und wurde **vor dem Push entfernt** → **nicht auf
+GitHub**. Datei ist jetzt via `.gitignore` (`client_secret_*.json`) ignoriert, liegt weiter lokal.
+
+- [ ] Da die Datei in einem Dropbox-Ordner lag: Secret in der Cloud Console rotieren (billig, sicher).
+- [ ] Prüfen ob überhaupt gebraucht: bei reinem Frontend nur `client_id` per PKCE-Flow → JSON löschen.
+      Falls der OAuth-Austausch in `server.js` läuft, Secret als Env-Var auf den Server, nie ins Repo.
+
+## 3. npm-Vulnerabilities
+- [x] `nanoid` 3.3.7 → 3.3.18 (GHSA-xwg4-73v4-xw9w), erledigt 2026-09-07. War nur transitive
+      Build-Abhängigkeit (`@vue/cli-service → postcss`), nicht im Runtime-Bundle.
+- [ ] `npm audit` meldet weiterhin viele Funde – fast alles im veralteten `@vue/cli`-Tooling
+      (Build-Zeit, nicht Runtime). Bei Wiederaufnahme überlegen:
+  - Migration `@vue/cli` (EOL) → **Vite** räumt den Großteil auf.
+  - `node-sass` (deprecated) → `sass` (Dart Sass).
+
+## 4. `MediaLookup/`-Unterordner
+Enthält nur DB-Dumps (`db/Dump20231213/*.sql`), keinen Code. Prüfen ob noch gebraucht, sonst
+archivieren/löschen.
+
+---
+
 ## Routing
 
 ## Database
