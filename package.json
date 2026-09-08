@@ -44,6 +44,9 @@
     "sass-loader": "^13.2.0",
     "vue-router": "^4.2.5"
   },
+  "overrides": {
+    "browserslist": "^4.28.7"
+  },
   "eslintConfig": {
     "root": true,
     "env": {
