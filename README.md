@@ -5,25 +5,32 @@
 npm install
 ```
 
-### Compiles complete application client AND server (mySQL DB server)
+Google-API-Keys in `.env.local` eintragen (Vorlage: `.env.example`).
+
+### Startet Client (Vite) UND Server (Express + MySQL) gleichzeitig
 ```
 npm run start
 ```
 
-### Compiles and hot-reloads for development
+### Nur Client: Vite-Dev-Server mit Hot-Reload (Port 8081)
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Production-Build (Ausgabe nach dist/)
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Production-Build lokal ansehen
+```
+npm run preview
+```
+
+### Lint (nur Frontend-Code) und Auto-Fix
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Build-Tooling
+Vite 8 + `@vitejs/plugin-vue`. Konfiguration in `vite.config.mjs`.

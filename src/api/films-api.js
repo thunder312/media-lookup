@@ -4,11 +4,11 @@ const key = "key="
 
 export async function globalSearch(query) {
     return new Promise((resolve, reject) => {
-        // console.log("url: " + BASE_URL + query + "&" + key + process.env.VUE_APP_GOOGLE_API_KEY + "&"+ indent + "True");
+        // console.log("url: " + BASE_URL + query + "&" + key + import.meta.env.VITE_GOOGLE_API_KEY + "&"+ indent + "True");
         fetch(BASE_URL +
                 query +
                 "&" +
-                key + process.env.VUE_APP_GOOGLE_API_KEY + "&"+
+                key + import.meta.env.VITE_GOOGLE_API_KEY + "&"+
                 indent + "True"
                 )
                 .then((response) => {

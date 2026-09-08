@@ -38,9 +38,19 @@ GitHub**. Datei ist jetzt via `.gitignore` (`client_secret_*.json`) ignoriert, l
 - [x] `browserslist` → `^4.28.7` (GHSA-73wf-gq98-2v4g, Prototype Pollution / DoS via
       `browserslist-stats.json`), erledigt 2026-09-08. Nur transitive Build-Abhängigkeit
       (autoprefixer/babel/webpack). Per `overrides` in `package.json` erzwungen → jetzt 4.28.9.
-- [ ] `npm audit` meldet weiterhin viele Funde – fast alles im veralteten `@vue/cli`-Tooling
-      (Build-Zeit, nicht Runtime). Bei Wiederaufnahme überlegen:
-  - Migration `@vue/cli` (EOL) → **Vite** räumt den Großteil auf.
+- [x] **Migration `@vue/cli` (EOL) → Vite 8**, erledigt 2026-09-08. `npm audit` jetzt **0 Funde**
+      (vorher 128 auf GitHub / 72 lokal), `node_modules` 346 statt 1231 Pakete.
+  - Neu: `vite.config.mjs`, `index.html` (Root), `.env.example`. Entfernt: `vue.config.js`,
+    `babel.config.js`, `webpack.config.js` (war ungenutzt), `public/index.html`.
+  - Deps raus: `@vue/cli-*`, `@babel/*`, `core-js`, `sass-loader`, `bootstrap-vue` (Vue-2-only,
+    war nirgends importiert). Rein: `vite`, `@vitejs/plugin-vue`, `vite-plugin-eslint`;
+    `eslint` 7 → 8, `eslint-plugin-vue` 8 → 9.
+  - Env-Vars `VUE_APP_*` → `VITE_*` (in `src/main.js`, `src/api/films-api.js`, `.env.local`,
+    `.env.production.local`). `process.env.BASE_URL` → `import.meta.env.BASE_URL`.
+  - `overrides` zusätzlich für `qs` (express/body-parser-Kette) und `uuid` (sequelize) → 0 Funde.
+  - `npm run lint` deckt jetzt nur Frontend-Code ab (`src/controllers|models|routes|config`
+    via `ignorePatterns` ausgeklammert – ist Express-Backend, hat 23 vorbestehende Lint-Fehler
+    inkl. echtem `no-dupe-keys` in `src/models/film.model.js:72`, separat aufräumen).
 - [ ] SCSS auf Modul-System umstellen (`@use`/`map.get` statt `@import`/`map-get`) in
       `src/scss/_themes.scss` + `_app.scss`, sonst bricht es mit Dart Sass 3.0.
       Automatischer Migrator: `npx sass-migrator module src/scss/*.scss`.

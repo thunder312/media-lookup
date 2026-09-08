@@ -10,7 +10,7 @@ import mitt from 'mitt'; // event dispatcher (emitter)
 import vue3GoogleLogin from 'vue3-google-login'
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
       { path: '/', component: Home },
       { path: '/receipts', component: Receipts },
@@ -25,10 +25,10 @@ const app = createApp(App);
 app.config.globalProperties.emitter = emitter;
 
 const config = {
-  api_key: process.env.VUE_APP_GOOGLE_API_KEY,
-  clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
-  discoveryDocs: process.env.VUE_APP_GOOGLE_DISCOVERY_DOCS,
-  scope: process.env.VUE_APP_GOOGLE_SCOPE
+  api_key: import.meta.env.VITE_GOOGLE_API_KEY,
+  clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+  discoveryDocs: import.meta.env.VITE_GOOGLE_DISCOVERY_DOCS,
+  scope: import.meta.env.VITE_GOOGLE_SCOPE
 }
 
 app.use(vue3GoogleLogin, config);
