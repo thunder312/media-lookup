@@ -35,6 +35,9 @@ GitHub**. Datei ist jetzt via `.gitignore` (`client_secret_*.json`) ignoriert, l
 - [x] `node-sass` → **Dart Sass** (`sass`), erledigt 2026-09-07. `node-sass@8` hat keine Binary
       für Node 22, `npm run build` brach ab. Läuft jetzt durch (nur Dart-Sass-Deprecation-Warnings:
       legacy JS API, `@import`, `map-get`/`map-merge` – erst bei Dart Sass 3.0 relevant, siehe unten).
+- [x] `browserslist` → `^4.28.7` (GHSA-73wf-gq98-2v4g, Prototype Pollution / DoS via
+      `browserslist-stats.json`), erledigt 2026-09-08. Nur transitive Build-Abhängigkeit
+      (autoprefixer/babel/webpack). Per `overrides` in `package.json` erzwungen → jetzt 4.28.9.
 - [ ] `npm audit` meldet weiterhin viele Funde – fast alles im veralteten `@vue/cli`-Tooling
       (Build-Zeit, nicht Runtime). Bei Wiederaufnahme überlegen:
   - Migration `@vue/cli` (EOL) → **Vite** räumt den Großteil auf.
